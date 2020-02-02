@@ -29,9 +29,16 @@ class PredictResponse(BaseModel):
 app = FastAPI(port=os.environ.get('PORT'))
 
 
+@app.get('/')
+def index():
+    model = get_model()
+    model.train()
+    return {'status':'trained'}
+
 @app.post("/predict", response_model=PredictResponse)
 def predict(input: PredictRequest, model: Model = Depends(get_model)):
     X = np.array(input.data)
+
     y_pred = model.predict(X)
     result = PredictResponse(data=y_pred.tolist())
 
