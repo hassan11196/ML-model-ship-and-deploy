@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-
+import os
 from typing import List
 
 from fastapi import FastAPI, File, UploadFile, HTTPException, Depends
@@ -26,7 +26,7 @@ class PredictResponse(BaseModel):
     data: List[float]
 
 
-app = FastAPI()
+app = FastAPI(port=os.environ.get('PORT'))
 
 
 @app.post("/predict", response_model=PredictResponse)

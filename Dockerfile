@@ -10,7 +10,7 @@ RUN apt-get update \
 ENV PYTHONPATH=/api
 WORKDIR /api
 
-EXPOSE 8000
+EXPOSE $PORT
 
 ENTRYPOINT ["uvicorn"]
-CMD ["api.main:app", "--host", "0.0.0.0"]
+CMD ["api.main:app", "--host", "0.0.0.0",]
