@@ -1,5 +1,5 @@
 build:
     docker:
       web: Dockerfile
-  run:
-    web: api.main:app --host 0.0.0.0
+run:
+    web: uvicorn api.main:app --host 0.0.0.0
