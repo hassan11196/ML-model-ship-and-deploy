@@ -9,7 +9,6 @@ from starlette.status import HTTP_422_UNPROCESSABLE_ENTITY
 
 from .ml.model import Model, get_model, n_features
 
-
 class PredictRequest(BaseModel):
     data: List[List[float]]
 
@@ -31,9 +30,11 @@ app = FastAPI(port=os.environ.get('PORT'))
 
 @app.get('/')
 def index():
+    
     model = get_model()
-    model.train()
-    return {'status':'trained'}
+    dat = model.auto_train()
+    model.save()
+    return {'status':'trained', **dat}
 
 @app.post("/predict", response_model=PredictResponse)
 def predict(input: PredictRequest, model: Model = Depends(get_model)):
