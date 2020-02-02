@@ -1,0 +1,5 @@
+build:
+    docker:
+      web: Dockerfile
+run:
+    web: gunicorn -w  -k uvicorn.workers.UvicornWorker api.main:app
