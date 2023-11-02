@@ -1,16 +1,28 @@
-FROM ubuntu:19.10
+FROM python:3.11
 
-COPY ./api /api/api
-COPY requirements.txt /requirements.txt
 
-RUN apt-get update \
-    && apt-get install python3-dev python3-pip -y \
-    && pip3 install -r requirements.txt
+# Install necessary packages for OCR
+RUN apt-get update -y && apt-get install -y tesseract-ocr && apt-get install ffmpeg libsm6 libxext6 -y && apt-get install libgl1 -y && apt-get install pandoc -y
+
+#if you are using a specific version, specify here
+
+RUN pip install nltk numpy
+
+RUN python3 -c "import nltk ; nltk.download('punkt'); nltk.download('averaged_perceptron_tagger')"
+
 
 ENV PYTHONPATH=/api
-WORKDIR /api
-
 EXPOSE $PORT
 
-# ENTRYPOINT ["uvicorn"]
-# CMD ["api.main:app", "--host", "0.0.0.0"]
+# WORKDIR /code
+WORKDIR /api
+
+# COPY ./requirements.txt /code/requirements.txt
+COPY requirements.txt /requirements.txt
+
+RUN pip install --upgrade -r /code/requirements.txt
+
+# COPY ./app /code/app
+COPY ./api /api/api
+
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "1"]
