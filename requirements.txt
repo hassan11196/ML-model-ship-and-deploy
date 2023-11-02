@@ -3,7 +3,6 @@ uvicorn
 scikit-learn
 pydantic
 pandas
-
 python-multipart
 pytest
 requests
