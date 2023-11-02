@@ -36,7 +36,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: user/ml-fast-ship-and-deploy:latest
+          tags: hassan11196/ml-fast-ship-and-deploy:latest
 
       #     cache-from: type=local,src=/tmp/.buildx-cache
       #     cache-to: type=local,dest=/tmp/.buildx-cache-new
