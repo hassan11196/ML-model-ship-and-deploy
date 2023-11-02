@@ -2,9 +2,9 @@ name: Docker Build and Cache
 
 on:
   push:
-    branches: [ develop-ml ]
+    branches: [ master ]
   pull_request:
-    branches: [ develop-ml ]
+    branches: [ master ]
 
 jobs:
   build:
