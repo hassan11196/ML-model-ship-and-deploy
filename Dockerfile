@@ -20,7 +20,8 @@ WORKDIR /api
 # COPY ./requirements.txt /code/requirements.txt
 COPY requirements.txt /requirements.txt
 
-RUN pip install --upgrade -r /code/requirements.txt
+# RUN pip install --upgrade -r /code/requirements.txt
+RUN pip install --upgrade -r /requirements.txt
 
 # COPY ./app /code/app
 COPY ./api /api/api
