@@ -5,7 +5,7 @@ import pandas as pd
 from pathlib import Path
 from sklearn.model_selection import train_test_split, cross_val_score
 from sklearn.ensemble import RandomForestRegressor
-from sklearn.datasets import load_boston
+# from sklearn.datasets import load_boston
 from sklearn.metrics import mean_squared_error
 import random
 class Model:
