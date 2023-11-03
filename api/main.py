@@ -14,4 +14,5 @@ def index():
             "question": "how are you?",
             "id": 1,
             "title": "title",
-            "context": "context",}
+            "context": "context",
+            "answers": "answers",}
