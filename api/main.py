@@ -9,4 +9,8 @@ app = FastAPI(port=os.environ.get('PORT'))
 @app.get('/')
 def index():
     print("hello world")
-    return {'status':'trained', "answer": "good", "question": "how are you?", "id": 1}
+    return {'status':'trained', 
+            "answer": "good",
+            "question": "how are you?",
+            "id": 1,
+            "title": "title",}
